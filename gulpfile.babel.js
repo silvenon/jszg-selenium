@@ -5,13 +5,7 @@ import serveStatic from 'serve-static';
 import selenium from 'selenium-standalone';
 import webdriver from 'gulp-webdriver';
 
-let httpServer, seleniumServer, integrationDeps;
-
-if (process.env.TRAVIS_SAUCE_CONNECT) {
-  integrationDeps = ['serve'];
-} else {
-  integrationDeps = ['serve', 'selenium'];
-}
+let httpServer, seleniumServer;
 
 gulp.task('serve', (done) => {
   const app = connect().use(serveStatic('test/fixtures'));
@@ -27,7 +21,7 @@ gulp.task('selenium', (done) => {
   });
 });
 
-gulp.task('integration', integrationDeps, () => {
+gulp.task('integration', ['serve', 'selenium'], () => {
   return gulp.src('wdio.conf.js')
     .pipe(webdriver())
     .on('error', () => {
