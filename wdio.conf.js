@@ -46,13 +46,22 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
+    capabilities: process.env.TRAVIS_SAUCE_CONNECT ? [{
         browserName: 'chrome',
         version: '27.0',
         platform: 'XP',
         tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-        name: 'integration',
+        name: 'JavaScript Zagreb',
         build: process.env.TRAVIS_BUILD_NUMBER
+    }, {
+        browserName: 'internet explorer',
+        version: '9.0',
+        platform: 'Windows 7',
+        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+        name: 'JavaScript Zagreb',
+        build: process.env.TRAVIS_BUILD_NUMBER
+    }] : [{
+        browserName: 'phantomjs'
     }],
     //
     // ===================
@@ -108,7 +117,7 @@ exports.config = {
     // Test reporter for stdout.
     // The following are supported: dot (default), spec and xunit
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporter: 'spec',
+    reporter: 'dot',
 
     //
     // Options to be passed to Mocha.
