@@ -7,7 +7,12 @@
   <body>
     <h1>Hello World!</h1>
     <script>
-      document.querySelector('h1').classList.add('jszg');
+      var heading = document.querySelector('h1');
+      if (heading.classList) {
+        heading.classList.add('jszg');
+      } else {
+        heading.className = 'jszg';
+      }
     </script>
   </body>
 </html>
