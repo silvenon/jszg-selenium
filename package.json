@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.24",
+    "connect": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-webdriver": "^1.0.1",
+    "mocha": "^2.3.2",
+    "selenium-standalone": "^4.6.0",
+    "serve-static": "^1.10.0"
+  }
+}
