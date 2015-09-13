@@ -1,6 +1,23 @@
 exports.config = {
 
     //
+    // =================
+    // Service Providers
+    // =================
+    // WebdriverIO supports Sauce Labs, Browserstack and Testing Bot (other cloud providers
+    // should work too though). These services define specific user and key (or access key)
+    // values you need to put in here in order to connect to these services.
+    //
+    user: process.env.SAUCE_USERNAME,
+    key: process.env.SAUCE_ACCESS_KEY,
+
+    //
+    // If you are using Sauce Labs, WebdriverIO takes care to update the job information
+    // once the test is done. This option is set to `true` by default.
+    //
+    updateJob: true,
+
+    //
     // ==================
     // Specify Test Files
     // ==================
@@ -30,7 +47,12 @@ exports.config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        browserName: 'phantomjs'
+        browserName: 'chrome',
+        version: '27.0',
+        platform: 'XP',
+        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+        name: 'integration',
+        build: process.env.TRAVIS_BUILD_NUMBER
     }],
     //
     // ===================
