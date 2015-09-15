@@ -46,22 +46,13 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: process.env.TRAVIS_SAUCE_CONNECT ? [{
+    capabilities: [{
         browserName: 'chrome',
-        version: '27.0',
-        platform: 'XP',
-        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+        version: '45.0',
+        platform: 'Windows XP',
         name: 'JavaScript Zagreb',
-        build: process.env.TRAVIS_BUILD_NUMBER
-    }, {
-        browserName: 'internet explorer',
-        version: '9.0',
-        platform: 'Windows 7',
         tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-        name: 'JavaScript Zagreb',
         build: process.env.TRAVIS_BUILD_NUMBER
-    }] : [{
-        browserName: 'phantomjs'
     }],
     //
     // ===================
