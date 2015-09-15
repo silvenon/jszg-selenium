@@ -53,6 +53,13 @@ exports.config = {
         name: 'JavaScript Zagreb',
         tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
         build: process.env.TRAVIS_BUILD_NUMBER
+    }, {
+        browserName: 'internet explorer',
+        version: '9.0',
+        platform: 'Windows 7',
+        name: 'JavaScript Zagreb',
+        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+        build: process.env.TRAVIS_BUILD_NUMBER
     }],
     //
     // ===================

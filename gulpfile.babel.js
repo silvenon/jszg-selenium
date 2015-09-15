@@ -22,7 +22,11 @@ gulp.task('selenium', (done) => {
 
 gulp.task('integration', ['serve', 'selenium'], () => {
   return gulp.src('wdio.conf.js')
-    .pipe(webdriver());
+    .pipe(webdriver())
+    .on('error', () => {
+      seleniumServer.kill();
+      process.exit(1);
+    });
 });
 
 gulp.task('test', ['integration'], () => {

@@ -1,11 +1,11 @@
 import assert from 'assert';
 
 describe('suite', () => {
-  it('should have the correct page title', () => {
+  it('should have the correct class name', () => {
     return browser
       .url('/')
-      .getTitle().then((title) => {
-        assert.equal(title, 'JavaScript Zagreb');
+      .getAttribute('h1', 'class').then((klass) => {
+        assert.equal(klass, 'jszg');
       });
   });
 });
